@@ -11,19 +11,24 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Customize to your needs...
+prompt_context(){  }
+
 autoload -Uz promptinit
 promptinit
-alias rm=trash
+alias rm=trash-put
 
 export PATH=$PATH:/usr/local/go/bin
 
 # MySettings
+alias python=python3
+
 ## GraTeX
 export PATH=$PATH:~/Program/Rust/gratex/target/release
 alias gratex-convert="~/Program/Rust/gratex/target/release/gratex convert"
 
 ## Preview
 alias preview="open -a Preview"
+alias acro="open -a Adobe\ Acrobat\ Reader\ DC"
 
 ### Added by Zinit's installer
 if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
@@ -38,3 +43,19 @@ source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 ### End of Zinit's installer chunk
+
+
+# ================================
+#  Keybinds
+# ================================
+
+# C-R: peco-history-selection
+## Change before: history-incremental-search-backward
+function peco-history-selection {
+  BUFFER=$(\history -nr 1 | peco)
+  CURSOR=${#BUFFER}
+}
+zle -N peco-history-selection
+bindkey \^R peco-history-selection
+
+
