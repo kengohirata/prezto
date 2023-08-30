@@ -30,3 +30,6 @@
 	path = modules/prompt/external/powerlevel10k
 	url = https://github.com/romkatv/powerlevel10k.git
 	shallow = true
+[submodule "modules/prompt/external/agnoster-zsh-theme"]
+	path = modules/prompt/external/agnoster
+	url = git@github.com:kengohirata/agnoster-zsh-theme.git
